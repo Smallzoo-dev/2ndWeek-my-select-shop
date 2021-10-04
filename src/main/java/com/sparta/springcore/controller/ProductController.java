@@ -5,6 +5,7 @@ import com.sparta.springcore.dto.ProductMypriceRequestDto;
 import com.sparta.springcore.dto.ProductRequestDto;
 import com.sparta.springcore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -60,5 +61,11 @@ public class ProductController {
         Long userId = userDetails.getUser().getId();
 
         return productService.getProducts(userId);
+    }
+
+    @Secured("UserRoleEnum.Authority.ADMIN")
+    @GetMapping("/api/admin/products")
+    public List<Product> getAllProducts(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return productService.getAllProducts();
     }
 }

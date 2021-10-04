@@ -1,17 +1,13 @@
 package com.sparta.springcore.service;
-
 import com.sparta.springcore.dto.SignupRequestDto;
 import com.sparta.springcore.model.User;
 import com.sparta.springcore.model.UserRoleEnum;
 import com.sparta.springcore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
-
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 
 @Service
 public class UserService {
